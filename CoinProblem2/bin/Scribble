@@ -1,0 +1,8 @@
+count[0] = 1;
+for (int x = 1; x <= n; x++) {
+for (auto c : coins) {
+if (x-c >= 0) {
+count[x] += count[x-c];
+}
+}
+}
