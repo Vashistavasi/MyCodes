@@ -27,25 +27,40 @@ class Solution
     {
         // code here 
         ArrayList<Integer> ans=new ArrayList<Integer>();
-        HashSet<Integer> hs=new HashSet<Integer>();
-        ArrayList<Integer> temp=new ArrayList<Integer>();
+    //    HashSet<Integer> hs=new HashSet<Integer>();
+        HashMap<Integer,Integer> hm=new HashMap<Integer,Integer>();
+       // ArrayList<Integer> temp=new ArrayList<Integer>();
         for(int j=0;j<k;j++){
-             temp.add(A[j]); 
-             hs.add(A[j]);
+           //  temp.add(A[j]); 
+            // hs.add(A[j]);
+             if(!hm.containsKey(A[j])) {
+            	 hm.put(A[j], 1);
+             }
+             else
+            	 hm.put(A[j], hm.get(A[j])+1);
         }
-        ans.add(hs.size());
+        ans.add(hm.size());
         for(int i=k;i<n;i++){
-           temp.remove(0);
-           temp.add(A[i]);
-            ans.add(findSize(temp));
+        	int value=hm.get(A[i-k]);
+        	if(value>1)
+        		hm.put(A[i-k],value-1);
+        	else
+        		hm.remove(A[i-k]);
+           //temp.remove(0);
+           //temp.add(A[i]);
+        	if(!hm.containsKey(A[i]))
+        		hm.put(A[i], 1);
+        	else
+        		hm.put(A[i], hm.get(A[i])+1);
+            ans.add(hm.size());
         }
         return ans;
     }
 
-	public  Integer findSize(ArrayList<Integer> temp) {
-		// TODO Auto-generated method stub
-		HashSet<Integer> hs=new HashSet<>(temp);
-		return hs.size();
-	}
+//	public  Integer findSize(ArrayList<Integer> temp) {
+//		// TODO Auto-generated method stub
+//		HashSet<Integer> hs=new HashSet<>(temp);
+//		return hs.size();
+//	}
 }
 
