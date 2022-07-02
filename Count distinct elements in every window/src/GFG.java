@@ -39,6 +39,7 @@ class Solution
              else
             	 hm.put(A[j], hm.get(A[j])+1);
         }
+       
         ans.add(hm.size());
         for(int i=k;i<n;i++){
         	int value=hm.get(A[i-k]);
