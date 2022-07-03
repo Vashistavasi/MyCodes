@@ -47,6 +47,7 @@ class Solution
         		hm.put(A[i-k],value-1);
         	else
         		hm.remove(A[i-k]);
+        
            //temp.remove(0);
            //temp.add(A[i]);
         	if(!hm.containsKey(A[i]))
