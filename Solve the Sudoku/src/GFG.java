@@ -1,9 +1,8 @@
 // { Driver Code Starts
 //Initial Template for Java
 
-import java.util.*;
-import java.io.*;
-import java.lang.*;
+import java.sql.Timestamp;
+import java.time.Instant;
 
 class GFG
 {
@@ -15,18 +14,31 @@ class GFG
         
        
         {
-            int grid[][] ={{3, 0 ,6, 5, 0, 8, 4 ,0, 0},
-            		{5, 2 ,0, 0, 0 ,0, 0 ,0, 0},
-            		{0 ,8 ,7, 0 ,0 ,0, 0 ,3 ,1 },
-            		{0, 0 ,3 ,0 ,1 ,0 ,0 ,8, 0},
-            		{9, 0 ,0 ,8 ,6 ,3, 0 ,0 ,5},
-            		{0 ,5 ,0 ,0 ,9 ,0 ,6, 0, 0},
-            		{1, 3, 0, 0 ,0 ,0 ,2 ,5 ,0},
-            		{0 ,0 ,0 ,0 ,0 ,0, 0,7, 4},
-            		{0 ,0, 5 ,2, 0, 6 ,3 ,0 ,0}};
-    
+//            int grid[][] ={{3, 0 ,6, 5, 0, 8, 4 ,0, 0},
+//            		{5, 2 ,0, 0, 0 ,0, 0 ,0, 0},
+//            		{0 ,8 ,7, 0 ,0 ,0, 0 ,3 ,1 },
+//            		{0, 0 ,3 ,0 ,1 ,0 ,0 ,8, 0},
+//            		{9, 0 ,0 ,8 ,6 ,3, 0 ,0 ,5},
+//            		{0 ,5 ,0 ,0 ,9 ,0 ,6, 0, 0},
+//            		{1, 3, 0, 0 ,0 ,0 ,2 ,5 ,0},
+//            		{0 ,0 ,0 ,0 ,0 ,0, 0,7, 4},
+//            		{0 ,0, 5 ,2, 0, 6 ,3 ,0 ,0}};
+//    
             		
-         
+        	int grid[][] ={{1, 0 ,5, 0, 0, 0, 2 ,6, 0},
+            		{0, 0 ,0, 0, 0 ,0, 0 ,0, 0},
+            		{0 ,0 ,0, 0 ,0 ,8, 4 ,7 ,0 },
+            		{0, 9 ,0 ,2 ,1 ,0 ,0 ,0, 8},
+            		{0, 1 ,4 ,0 ,8 ,0, 3 ,9 ,0},
+            		{6 ,0 ,0 ,0 ,7 ,3 ,0, 2, 0},
+            		{0, 6, 2, 1 ,0 ,0 ,0 ,0 ,0},
+            		{0 ,0 ,0 ,0 ,0 ,0, 0,0, 0},
+            		{0 ,4, 7 ,0, 0, 0 ,5 ,0 ,6}};
+    
+//        	int grid[][] ={{1, 0 ,0, 0},
+//    		{0, 0,2, 0},
+//    		{0 ,3 ,0, 0 },
+//    		{0, 0 ,0 ,0}};
             
             Solution ob = new Solution();
             
@@ -57,10 +69,10 @@ class Solution
 				return false;
 			}
 		}
-		int startRow=row-row%3;
-		int startCol=col-col%3;
-		for(int i=0;i<3;i++) {
-			for(int j=0;j<3;j++) {
+		int startRow=(int) (row-(row%(Math.sqrt(grid.length))));
+		int startCol=(int) (col-col%Math.sqrt(grid.length));
+		for(int i=0;i<Math.sqrt(grid.length);i++) {
+			for(int j=0;j<Math.sqrt(grid.length);j++) {
 				if(grid[startRow+i][startCol+j]==num)
 					return false;
 			}
@@ -94,7 +106,10 @@ class Solution
     static boolean SolveSudoku(int grid[][])
     {
         // add your code here
+    	  Timestamp instant= Timestamp.from(Instant.now());  
+          System.out.println("1. from() method will return "+instant);  
     	return sudoko(grid, 0, 0);
+    	
     	
     }
     
@@ -108,5 +123,8 @@ class Solution
 			    		}
     	System.out.println();	
     	}
+    	  Timestamp instant= Timestamp.from(Instant.now());  
+          System.out.println(" return "+instant);  
     }
+    
 }
