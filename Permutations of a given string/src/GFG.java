@@ -41,8 +41,11 @@ class Solution {
     		al.add(s);
     	for(int i=l;i<r;i++) {
     		s=swap(l,i,s);
+    		System.out.println(s+" before ");
+    		System.out.println(l+" k ");
     		permute(l+1,r,s,al);
     		swap(l,i,s);
+    		System.out.println(s+" after ");
     	}
     }
     public String swap(int from,int to, String s) {
